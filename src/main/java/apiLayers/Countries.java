@@ -9,4 +9,10 @@ public class Countries extends APIFactory {
        return makeGetCallAndReturnResponse(apiRoutes.getAllCountries());
 
     }
+
+    public Response getCountry(String countryName) {
+
+        return makeGetCallWithParametersAndReturnResponse(apiRoutes.getSingleCountry(), countryName);
+
+    }
 }

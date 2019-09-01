@@ -27,6 +27,10 @@ public class APIFactory {
                 .get();
 
         return response;
-//        return response.prettyPrint();
+    }
+
+    Response makeGetCallWithParametersAndReturnResponse(String URI, String countryName) {
+
+        return RestAssured.given().when().get(URI+"{countryName}", countryName);
     }
 }
