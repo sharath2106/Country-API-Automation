@@ -14,7 +14,7 @@ public class CountryTest extends BaseTest {
         Response allCountries = countries.getAllCountries();
 
         JsonPath jsonPath = allCountries.jsonPath();
-        ArrayList<String> city = jsonPath.get("countryName");
+        ArrayList<String> city = jsonPath.get("countryName"); //TODO
 
         allCountries.then().assertThat().statusCode(200);
 
@@ -27,7 +27,7 @@ public class CountryTest extends BaseTest {
         JsonPath jsonPath = getCountryResponse.jsonPath();
         String city = jsonPath.get("countryName");
 
-        Assert.assertEquals("India", city);
+        Assert.assertEquals("India", city); //TODO
         getCountryResponse.then().assertThat().statusCode(200);
 
     }
@@ -36,6 +36,15 @@ public class CountryTest extends BaseTest {
     public void testInvalidCountry() {
         Response getCountryResponse = countries.getCountry("ITA");
 
+        getCountryResponse.then().assertThat().statusCode(404);
+
+    }
+
+    @Test
+    public void addNewCountry() {
+        Response getCountryResponse = countries.addNewCountry();
+
+        System.out.println(getCountryResponse);
         getCountryResponse.then().assertThat().statusCode(404);
 
     }
