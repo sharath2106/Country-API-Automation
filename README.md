@@ -3,7 +3,7 @@
 For this project, the link provided to access the services are down. And they are not working since the start of this task. 
 So, for execution purposes I've created a new Country API service using Springboot. 
 
-## **Steps to run the tests**
+### **Steps to run the tests**
 
 - Clone the repo - https://github.com/sharath2106/SpringBoot-API.git
 ```sh
@@ -28,6 +28,12 @@ $ mvn clean test
 
 ```
 - Now, the tests are up and running against the API.
+
+### Tools/Libraries used
+
+- Java
+- RestAssured
+- Springboot (for API)
 
 ### Test cases to be covered
 
