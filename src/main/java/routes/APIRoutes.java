@@ -27,7 +27,7 @@ public class APIRoutes {
     }
 
     private void setAddCountry() {
-        this.addCountry = baseURL+"/add";
+        this.addCountry = baseURL+"/addNewCountry";
     }
 
 }

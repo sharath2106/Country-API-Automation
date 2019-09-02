@@ -2,6 +2,7 @@ package APITests;
 
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.apache.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,41 +12,40 @@ public class CountryTest extends BaseTest {
 
     @Test
     public void testGetAllCountries() {
-        Response allCountries = countries.getAllCountries();
+        Response responseForAllCountries = countries.getAllCountries();
 
-        JsonPath jsonPath = allCountries.jsonPath();
-        ArrayList<String> city = jsonPath.get("countryName"); //TODO
-
-        allCountries.then().assertThat().statusCode(200);
+        JsonPath jsonPathContainingCountries = responseForAllCountries.jsonPath();
+        ArrayList<String> listOfAllCountries = jsonPathContainingCountries.get("countryName"); //TODO
+        Assert.assertTrue(listOfAllCountries.size()>0);
+        responseForAllCountries.then().assertThat().statusCode(HttpStatus.SC_OK);
 
     }
 
     @Test
     public void testCountry() {
-        Response getCountryResponse = countries.getCountry("IND");
+        Response getCountryResponseToGetCountry = countries.getCountry("IND");
 
-        JsonPath jsonPath = getCountryResponse.jsonPath();
-        String city = jsonPath.get("countryName");
+        JsonPath jsonPathContainingCountries = getCountryResponseToGetCountry.jsonPath();
+        String countryName = jsonPathContainingCountries.get("countryName");
 
-        Assert.assertEquals("India", city); //TODO
-        getCountryResponse.then().assertThat().statusCode(200);
+        Assert.assertEquals("India", countryName); //TODO
+        getCountryResponseToGetCountry.then().assertThat().statusCode(HttpStatus.SC_OK);
 
     }
 
     @Test
     public void testInvalidCountry() {
-        Response getCountryResponse = countries.getCountry("ITA");
+        Response getCountryResponseForInvalidCountry = countries.getCountry("ITA");
 
-        getCountryResponse.then().assertThat().statusCode(404);
+        getCountryResponseForInvalidCountry.then().assertThat().statusCode(HttpStatus.SC_NOT_FOUND);
 
     }
 
     @Test
     public void addNewCountry() {
-        Response getCountryResponse = countries.addNewCountry();
+        Response getCountryResponseAfterAdding = countries.addNewCountry();
 
-        System.out.println(getCountryResponse);
-        getCountryResponse.then().assertThat().statusCode(404);
+        getCountryResponseAfterAdding.then().assertThat().statusCode(HttpStatus.SC_OK);
 
     }
 }
