@@ -3,6 +3,8 @@
 For this project, the link provided to access the services are down. And they are not working since the start of this task. 
 So, for execution purposes I've created a new Country API service using Springboot. 
 
+If mocking is what expected from the task, I could very well replace the environment with Wiremock or any other mocking libraries. Here, there was time to create a service from scratch and so, I went ahead with creating one.
+
 ### **Steps to run the tests**
 
 - Clone the repo - https://github.com/sharath2106/SpringBoot-API.git
