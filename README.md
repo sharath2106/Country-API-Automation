@@ -39,7 +39,6 @@ $ mvn clean test
 
 ### Test cases to be covered
 
-Please create the following automated test scenarios:
 - Get all countries and validate that US, DE and GB were returned in the response - DONE
 - Get each country (US, DE and GB) individually and validate the response  - DONE
 - Try to get information for inexistent countries and validate the response - DONE (API returns 500 instead of 404, it's intentionally made so that we can witness the test failing for the assertion)
